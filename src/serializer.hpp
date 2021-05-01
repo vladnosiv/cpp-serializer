@@ -10,7 +10,7 @@
 
 #define SERIALIZE_CLASS(args...) \
     void serialize(std::ostream &os) const { serializer::serialize_fields(os, args); } \
-    auto deserialize(std::istream &is) { return serializer::deserialize_fields(is, args); }
+    void deserialize(std::istream &is) { serializer::deserialize_fields(is, args); }
 
 namespace serializer {
 
