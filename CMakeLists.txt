@@ -4,4 +4,6 @@ project(serializer)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(serializer src/serializer.hpp  src/main.cpp)
+set(Sources src/main.cpp)
+set(Headers src/serializer.hpp)
+add_executable(serializer ${Sources} ${Headers})
