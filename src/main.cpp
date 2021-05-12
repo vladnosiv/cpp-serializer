@@ -25,7 +25,8 @@ int main() {
             {3, 67},
             {3, 25, 345, 456, 4},
             {4, 2},
-            {5}};
+            {5}
+    };
     serializer::save_to_file("tmp.txt", s);
     auto s_new = serializer::read_from_file<decltype(s)>("tmp.txt");
     assert(s == s_new);

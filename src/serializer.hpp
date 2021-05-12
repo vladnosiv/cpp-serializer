@@ -21,32 +21,17 @@ namespace serializer {
     namespace serializer_concepts {
         template<typename T> concept Arithmetic = std::is_arithmetic_v<T>;
         template<typename T> concept Sizeable = requires(T const &t) {
-            {
-            t.size()
-            }
-            ->std::same_as<std::size_t>;
+            { t.size() } -> std::same_as<std::size_t>;
         };
         template<typename T>
         concept IterableContainer = requires(T &cont, T const &const_cont) {
             typename T::value_type;
             typename T::iterator;
             typename T::const_iterator;
-            {
-            cont.begin()
-            }
-            ->std::same_as<typename T::iterator>;
-            {
-            cont.end()
-            }
-            ->std::same_as<typename T::iterator>;
-            {
-            const_cont.begin()
-            }
-            ->std::same_as<typename T::const_iterator>;
-            {
-            const_cont.end()
-            }
-            ->std::same_as<typename T::const_iterator>;
+            { cont.begin() }       -> std::same_as<typename T::iterator>;
+            { cont.end() }         -> std::same_as<typename T::iterator>;
+            { const_cont.begin() } -> std::same_as<typename T::const_iterator>;
+            { const_cont.end() }   -> std::same_as<typename T::const_iterator>;
         };
         template<typename T>
         concept HasTwoIteratorConstructor = requires(typename T::iterator it) {
